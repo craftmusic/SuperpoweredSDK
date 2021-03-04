@@ -14,8 +14,10 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/craftmusic/SuperpoweredSDK.git", :tag => "#{s.version}" }
 
   
-  s.source_files = "ios/**/*.{h,m,mm,swift}"
-  
+  s.source_files = "ios/**/*.{h,m,mm,hpp,swift}"
+  s.requires_arc = true
+  s.frameworks = "MediaPlayer"
 
-  s.dependency "React-Core"
+  s.dependency "React"
+  s.dependency "Superpowered"
 end
