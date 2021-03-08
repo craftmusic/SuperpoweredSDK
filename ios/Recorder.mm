@@ -1,11 +1,12 @@
 #import "Recorder.h"
+#include <Superpowered.h>
 #include <SuperpoweredRecorder.h>
 #include <SuperpoweredIOSAudioIO.h>
 #include <SuperpoweredSimple.h>
 
 
 @implementation Recorder {
-    SuperpoweredRecorder *recorder;
+//    SuperpoweredRecorder *recorder;
     SuperpoweredIOSAudioIO *audioIO;
 }
 
@@ -30,7 +31,7 @@ static dispatch_once_t onceToken;
 static bool audioProcessing(void *clientData, float **inputBuffers, unsigned int inputChannels, float **outputBuffers, unsigned int outputChannels, unsigned int numberOfSamples, unsigned int sampleRate, uint64_t hostTime) {
     __unsafe_unretained Recorder *self = (__bridge Recorder *)clientData;
     
-    self->recorder->process(inputBuffers[0], inputBuffers[1], numberOfSamples);
+//    self->recorder->process(inputBuffers[0], inputBuffers[1], numberOfSamples);
     return false;
 }
 
@@ -46,7 +47,7 @@ static bool audioProcessing(void *clientData, float **inputBuffers, unsigned int
     
     const char *temp = [tempPath UTF8String];
     
-    recorder = new SuperpoweredRecorder(temp, sampleRate, minSeconds, numChannels, applyFade);
+//    recorder = new SuperpoweredRecorder(temp, sampleRate, minSeconds, numChannels, applyFade);
     
     audioIO = [[SuperpoweredIOSAudioIO alloc] initWithDelegate:(id<SuperpoweredIOSAudioIODelegate>)self preferredBufferSize:12 preferredSamplerate:sampleRate audioSessionCategory:AVAudioSessionCategoryRecord channels:numChannels audioProcessingCallback:audioProcessing clientdata:(__bridge void *)self];
     
@@ -67,13 +68,13 @@ static bool audioProcessing(void *clientData, float **inputBuffers, unsigned int
 
     const char *dest = [destPath UTF8String];
     
-    recorder->start(dest);
+//    recorder->start(dest);
     [audioIO start];
 }
 
 - (NSString *) stopRecord {
     [audioIO stop];
-    recorder->stop();
+//    recorder->stop();
     
     return [self getRecordFileName];
 }

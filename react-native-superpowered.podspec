@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 
   
   s.source_files = "ios/**/*.{h,m,mm,hpp,swift}"
-  s.requires_arc = true
+  # s.requires_arc = true
   s.frameworks = "MediaPlayer"
 
   s.dependency "React"
