@@ -27,7 +27,7 @@
         audioSessionCategory = category;
 #endif
         preferredBufferSizeMs = preferredBufferSize;
-        preferredMinimumSamplerate = 48000;
+        preferredMinimumSamplerate = prefsamplerate;
         processingCallback = NULL;
         processingClientdata = NULL;
         delegate = d;

@@ -95,7 +95,7 @@ namespace Superpowered {
         /// @brief These codes extend the standard HTTP status codes.
         static const int StatusCode_OutOfMemoryError = 1;   ///< Out of memory. Check your code for memory leaks.
         static const int StatusCode_FileOperationError = 2; ///< Can't read or write the disk. Perhaps the disk is full or is there a permission problem?
-        static const int StatusCode_NetworkSocketError = 3; ///< Can't connect to the server. Perhaps there is no internet connection.
+        static const int StatusCode_NetworkSocketError = 3; ///< Can't connect or lost connection to the server. Perhaps there is no internet connection.
         static const int StatusCode_InvalidResponseError = 4;         ///< Can't parse the server response.
         static const int StatusCode_MaximumRedirectsReachedError = 5; ///< Too many redirects happened.
         static const int StatusCode_Canceled = 6;  ///< The request was canceled.
@@ -118,6 +118,11 @@ namespace Superpowered {
     };
     
     /// @brief HTTP request.
+    /// Works with HTTP and HTTPS. Supported cipher suites for HTTPS:
+    /// TLS_RSA_WITH_AES_256_CBC_SHA256
+    /// TLS_RSA_WITH_AES_256_CBC_SHA
+    /// TLS_RSA_WITH_AES_128_CBC_SHA256
+    /// TLS_RSA_WITH_AES_128_CBC_SHA
     class httpRequest {
     public:
         char *url; ///< The url to connect to. Might include the query string, however the "data" parameter is more convenient to construct query strings. NULL by default.
@@ -134,6 +139,7 @@ namespace Superpowered {
         unsigned int customContentLengthBytes; ///< The size in bytes of customContent.
         bool disableHttpCacheControl; ///< Disable HTTP caching by adding a Cache-Control: no-cache, no-store, must-revalidate header. Default: true.
         bool customDownloadHandling;  ///< Set to true to use your own data handling/file writing. Default: false.
+        bool returnWithDataOnError;   ///< Set to true to return with all data when the HTTP response is an error. Default: false.
         
         /// @brief Constructor with url. Example: request = new Superpowered::request(myURL);
         /// @param url The relative url.

@@ -355,8 +355,10 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
 }
 
 - (void) toggleProject:(NSDictionary *)positions {
+    if (self.playing) {
+        [self->output stop];
+    }
     
-    [self->output stop];
     if(!self.playing) {
         [self playProject:positions];
     } else {
@@ -366,7 +368,9 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
 
 - (void) playProject:(NSDictionary *)positions {
     unsigned int counter = 0;
-    [self->output stop];
+    
+//    [self->output stop];
+
     if (positions.allKeys.count == 0) {
         self.currentPlayOffset = 0;
         [self setProjectPosition:0];
