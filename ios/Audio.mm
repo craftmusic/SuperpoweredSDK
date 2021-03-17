@@ -229,12 +229,12 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
         AudioPlayerInstance *audioPlayer = self.audioPlayers[key];
         //TODO try setting a property when its done completely playing file EOF
         // try to fix recording??short track?? as first audio player
-        Superpowered::PlayerEvent latestEvent = audioPlayer.player->getLatestEvent();
-        if(latestEvent == Superpowered::PlayerEvent_Opened){
+        Superpowered::AdvancedAudioPlayer::PlayerEvent latestEvent = audioPlayer.player->getLatestEvent();
+        if(latestEvent == Superpowered::AdvancedAudioPlayer::PlayerEvent_Opened){
             NSLog(@"player %@ opened", key);
             audioPlayer.player->firstBeatMs = audioPlayer.beatgridStartMs;
             audioPlayer.player->originalBPM = audioPlayer.bpm;
-            audioPlayer.player->syncMode = Superpowered::SyncMode_None;
+            audioPlayer.player->syncMode = Superpowered::AdvancedAudioPlayer::SyncMode_None;
             self->flanger->bpm = audioPlayer.echo->bpm = audioPlayer.bpm;
             audioPlayer.player->syncToBpm = audioPlayer.bpm;
             audioPlayer.player->syncToMsElapsedSinceLastBeat = audioPlayer.player->getMsElapsedSinceLastBeat();

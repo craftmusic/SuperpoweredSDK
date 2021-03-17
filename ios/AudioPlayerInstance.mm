@@ -102,7 +102,7 @@ static Superpowered::Decoder *openSourceFile(const char *path) {
     
     for (int i=0;i<analyzer->waveformSize;i++) {
         // waveformPoint must be added as Number/float
-        [waveformPoints addObject:[NSNumber numberWithFloat:analyzer->averageWaveform[i]]];
+        [waveformPoints addObject:[NSNumber numberWithFloat:analyzer->getAverageWaveform()[i]]];
     }
     // return BPM and waveform data
     NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithFloat:analyzer->bpm], @"bpm", waveformPoints, @"waveform", [NSNumber numberWithFloat:decoder->getDurationSeconds()], @"durationSeconds", nil];

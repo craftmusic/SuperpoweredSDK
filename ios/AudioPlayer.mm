@@ -108,20 +108,20 @@ static bool audioProcessing(void *clientdata, float **inputBuffers, unsigned int
     if(self->player->eofRecently()){
         return @"Finished";
     }
-    Superpowered::PlayerEvent latestEvent = self->player->getLatestEvent();
-    if(latestEvent == Superpowered::PlayerEvent_Opened) {
+    Superpowered::AdvancedAudioPlayer::PlayerEvent latestEvent = self->player->getLatestEvent();
+    if(latestEvent == Superpowered::AdvancedAudioPlayer::PlayerEvent_Opened) {
         return @"Opened";
     }
-    if(latestEvent == Superpowered::PlayerEvent_OpenFailed) {
+    if(latestEvent == Superpowered::AdvancedAudioPlayer::PlayerEvent_OpenFailed) {
         return @"OpenFailed";
     }
-    if(latestEvent == Superpowered::PlayerEvent_ConnectionLost) {
+    if(latestEvent == Superpowered::AdvancedAudioPlayer::PlayerEvent_ConnectionLost) {
         return @"ConnectionLost";
     }
-    if(latestEvent == Superpowered::PlayerEvent_ProgressiveDownloadFinished) {
+    if(latestEvent == Superpowered::AdvancedAudioPlayer::PlayerEvent_ProgressiveDownloadFinished) {
         return @"ProgressiveDownloadFinished";
     }
-    if(latestEvent == Superpowered::PlayerEvent_Opening) {
+    if(latestEvent == Superpowered::AdvancedAudioPlayer::PlayerEvent_Opening) {
         return @"Opening";
     }
     return @"None";

@@ -17,19 +17,19 @@ Pod::Spec.new do |s|
 #macOS
  s.osx.deployment_target = '10.10'
  s.osx.source_files = 'OpenSource/SuperpoweredOSXAudioIO.h', 'OpenSource/SuperpoweredOSXAudioIO.mm'
- s.osx.framework = 'AppKit', 'AVFoundation', 'AudioToolbox', 'AudioUnit', 'CoreAudio', 'CoreMedia'
+ s.osx.frameworks = 'AppKit', 'AVFoundation', 'AudioToolbox', 'AudioUnit', 'CoreAudio', 'CoreMedia'
  s.osx.vendored_libraries = 'libSuperpoweredAudioOSX.a'
 
 #iOS
  s.ios.deployment_target = '9.3'
  s.ios.source_files = 'OpenSource/SuperpoweredIOSAudioIO.h', 'OpenSource/SuperpoweredIOSAudioIO.mm'
- s.ios.framework = 'Foundation', 'AVFoundation', 'AudioToolbox', 'CoreAudio', 'CoreMedia', 'UIKit'
+ s.ios.frameworks = 'Foundation', 'AVFoundation', 'AudioToolbox', 'CoreAudio', 'CoreMedia', 'UIKit'
  s.ios.vendored_libraries = 'libSuperpoweredAudioIOS.a'
  
 #tvOS
  s.tvos.deployment_target = '9.0'
  s.tvos.source_files = 'OpenSource/SuperpoweredtvOSAudioIO.h', 'OpenSource/SuperpoweredtvOSAudioIO.mm'
- s.tvos.framework = 'Foundation', 'AVFoundation', 'AudioToolbox', 'CoreMedia', 'UIKit', 'MediaPlayer'
+ s.tvos.frameworks = 'Foundation', 'AVFoundation', 'AudioToolbox', 'CoreMedia', 'UIKit', 'MediaPlayer'
  s.tvos.vendored_libraries = 'libSuperpoweredAudiotvOS.a'
 
 end
