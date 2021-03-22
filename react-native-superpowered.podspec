@@ -17,8 +17,12 @@ Pod::Spec.new do |s|
   s.source_files = "ios/**/*.{h,m,mm,hpp,swift}"
   # s.requires_arc = true
   # s.framework = "MediaPlayer"
-  s.frameworks = "MediaPlayer", "AVFoundation", "AudioToolbox", "CoreMedia", "CoreAudio"
+
+  s.ios.source_files = "ios/**/*.{h,m,mm,hpp,swift", "Superpowered/OpenSource/SuperpoweredIOSAudioIO.h", "Superpowered/OpenSource/SuperpoweredIOSAudioIO.mm"
+  s.ios.frameworks = "Foundation", "AVFoundation", "AudioToolbox", "CoreAudio", "CoreMedia", "UIKit", "MediaPlayer"
+  s.ios.vendored_libraries = "Superpowered/libSuperpoweredAudioIOS.a"
+ 
+  s.pod_target_xcconfig = { 'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/../../node_modules/react-native-superpowered/Superpowered"/**' }
 
   s.dependency "React"
-  s.dependency "Superpowered"
 end
